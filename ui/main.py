@@ -114,6 +114,7 @@ class PDFReaderApp:
 
      # Display the first page
      self.render_page(file_path)
+        
     def render_page(self, file_path):
         # Clear the canvas
         self.pdf_canvas[file_path].delete("all")
@@ -177,8 +178,14 @@ class PDFReaderApp:
      # Destroy the tab and remove it from the notebook using the tab ID
      self.notebook.forget(tab_id)
     
+     # Update tab_ids for tabs after the removed tab
+     for path, id_ in self.tab_ids.items():
+        if id_ > tab_id:
+            self.tab_ids[path] -= 1
+
      # Delete the tab ID from the tab_ids dictionary
      del self.tab_ids[file_path]
+
  
 
 
