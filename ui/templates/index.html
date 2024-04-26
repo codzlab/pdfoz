@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Reader & Summarizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PDF Reader & Summarizer</h1>
+        <form id="pdfForm" enctype="multipart/form-data">
+            <input type="file" id="pdfInput" accept=".pdf" />
+            <button type="button" onclick="openPDF()">Open PDF</button>
+        </form>
+        <textarea id="pdfContent" readonly placeholder="PDF content will appear here..."></textarea>
+    </div>
+
+    <script>
+        function openPDF() {
+            var fileInput = document.getElementById('pdfInput');
+            var pdfContent = document.getElementById('pdfContent');
+
+            var file = fileInput.files[0];
+            if (!file) {
+                alert('Please select a PDF file.');
+                return;
+            }
+
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var text = e.target.result;
+                pdfContent.value = text;
+            };
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>
