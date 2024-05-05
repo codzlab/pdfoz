@@ -17,7 +17,7 @@ class PDFReaderApp:
         self.root.title("PDFOZ by CODZLAB")
         self.root.geometry("1000x800")
        # Load your logo image
-        icon_path = "./ui/iconh.png"  # Adjust the path to your icon image
+        icon_path = "./ui/icon.png"  # Adjust the path to your icon image
         try:
             self.root.iconphoto(True, tk.PhotoImage(file=icon_path))
         except tk.TclError:
